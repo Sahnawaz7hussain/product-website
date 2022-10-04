@@ -1,5 +1,6 @@
 import React from "react";
 // import { Link } from "react-router-dom";
+import { BsCart4 } from "react-icons/bs";
 import Styles from "./navbar.module.css";
 export const Navbar = () => {
   return (
@@ -15,7 +16,16 @@ export const Navbar = () => {
           </li>
           <li className={Styles.navOneLink}>
             {/* <Link to="/cart">Cart</Link> */}
-            Cart
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "3px",
+              }}
+            >
+              Cart
+              <BsCart4 />
+            </div>
           </li>
           <li className={Styles.navOneLink}>
             {/* <Link to="/blogs">Blogs</Link> */}
