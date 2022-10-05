@@ -36,8 +36,8 @@ const CartPage = () => {
     });
   };
 
-  const total=cartData.reduce((acc,el)=> acc + el.price* el.count,0)
-  console.log(total)
+  const total = cartData.reduce((acc, el) => acc + el.price * el.count, 0);
+  console.log(total);
   // if (isLoading) {
   //   return <h1>Loading Carts...</h1>;
   // }
@@ -53,7 +53,7 @@ const CartPage = () => {
                 borderBottomLeftRadius: "10px",
               }}
               className={Styles.cartImage}
-              src={el.image}
+              src={el.images[0]}
               alt={el.title}
             />
 
@@ -93,9 +93,7 @@ const CartPage = () => {
                   </button>
                 </div>
 
-              <div>
-               Total:{total}
-              </div>
+                <div>Total:{total}</div>
 
                 <button
                   onClick={() => handleRemoveCart(el.id)}
