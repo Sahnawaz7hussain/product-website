@@ -24,7 +24,7 @@ const CartPage = () => {
   };
   const handleIndCount = (id, count) => {
     dispatch(patchCart(id, count + 1)).then((res) => {
-      console.log(res);
+      // console.log(res);
       dispatch(getCarts());
       // setCarts([...carts, res.payload]);
     });
@@ -36,6 +36,8 @@ const CartPage = () => {
     });
   };
 
+  const total=cartData.reduce((acc,el)=> acc + el.price* el.count,0)
+  console.log(total)
   // if (isLoading) {
   //   return <h1>Loading Carts...</h1>;
   // }
@@ -51,7 +53,7 @@ const CartPage = () => {
                 borderBottomLeftRadius: "10px",
               }}
               className={Styles.cartImage}
-              src={el.images[0]}
+              src={el.image}
               alt={el.title}
             />
 
@@ -90,6 +92,11 @@ const CartPage = () => {
                     +
                   </button>
                 </div>
+
+              <div>
+               Total:{total}
+              </div>
+
                 <button
                   onClick={() => handleRemoveCart(el.id)}
                   className={Styles.removeButton}

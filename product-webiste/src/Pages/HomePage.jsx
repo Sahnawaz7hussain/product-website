@@ -16,6 +16,7 @@ const HomePage = () => {
   }, []);
   const handleAddToCart = (newData) => {
     dispatch(postCart({ ...newData, count: 1 })).then((res) => {
+      // console.log(res,"RES")
       if (res.payload) {
         alert("Product Added Successfully");
       } else {
