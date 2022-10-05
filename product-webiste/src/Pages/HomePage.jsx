@@ -1,60 +1,88 @@
-import axios from "axios";
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Styles from "./homepage.module.css";
-const getProducts = async () => {
-  let res = await axios.get(
-    "https://fake-json-server-api-sahnawaz.herokuapp.com/products"
-  );
-  return res.data;
-};
+import { useDispatch, useSelector } from "react-redux";
+import { getProduct } from "../Redux/ProductReducer/action";
+import { postCart } from "../Redux/CartReducer/action";
+import { Modal } from "../Components/Modal";
 const HomePage = () => {
-  const [data, setData] = useState([]);
-  // console.log(data);
-  useEffect(() => {
-    getProducts()
-      .then((res) => {
-        setData(res);
-      })
-      .catch((e) => {
-        console.log(e.message);
-      });
-  }, []);
+  const [show, setShow] = useState(false);
+  const dispatch = useDispatch();
 
-  const handleAddToCart = (p) => {
-    alert("Product added to Cart");
-    console.log(p);
+  const state = useSelector((state) => state.ProductReducer);
+  const { products, isLoading, isError } = state;
+
+  useEffect(() => {
+    dispatch(getProduct());
+  }, []);
+  const handleAddToCart = (newData) => {
+    dispatch(postCart({ ...newData, count: 1 })).then((res) => {
+      if (res.payload) {
+        alert("Product Added Successfully");
+      } else {
+        alert("Item Already exsit");
+      }
+    });
   };
-  const handleGiveRating = (p) => {
-    alert("giving rating done");
-  };
+  if (isLoading) {
+    return (
+      <img
+        style={{
+          marginTop: "13%",
+          marginLeft: "36%",
+        }}
+        src="https://media2.giphy.com/media/17mNCcKU1mJlrbXodo/200w.webp?cid=ecf05e477qmdvqnpzbq3nldhsq0ujvzlyyxezbovsz1yildq&rid=200w.webp&ct=g"
+        alt="Loading Produts..."
+      />
+    );
+  }
+  if (isError) {
+    return <h2>Something went wrong...</h2>;
+  }
   return (
     <>
       <div className={Styles.productsCont}>
-        {data &&
-          data.map((p) => (
-            <div className={Styles.productCont} key={p.id}>
-              <img className={Styles.productImg} src={p.avatar} alt="p" />
-              <div className={Styles.productNameAndPrice}>
-                <h2 className={Styles.productName}>{p.name}</h2>
-                <p className={Styles.productPrice}>₹{p.rent}</p>
-              </div>
-              <p className={Styles.productTitle}>{p.title}</p>
-              <p className={Styles.productRating}>Rating:⭐⭐⭐⭐</p>
+        {/* {isLoading && <h2>Loading Products...</h2>} */}
+        {products &&
+          products.map((el) => (
+            <div className={Styles.productCont} key={el.id}>
+              <img className={Styles.productImg} src={el.images[0]} alt="p" />
+
+              <h3 className={Styles.productTitle}>{el.title}</h3>
+
+              <p className={Styles.productPrice}>₹{el.price}</p>
+              <p className={Styles.productRating}>{`Rating:${el.rating}⭐`}</p>
               <div className={Styles.productCartAndRatingButton}>
                 <button
-                  onClick={() => handleAddToCart(p.id)}
+                  onClick={() => handleAddToCart(el)}
                   className={Styles.addToCart}
                 >
                   Add to Cart
                 </button>
                 <button
                   className={Styles.giveRating}
-                  onClick={() => handleGiveRating(p.id)}
+                  onClick={() => setShow(true)}
                 >
                   Give Rating
-                </button>
+                </button>{" "}
+                <Modal
+                  title="Give Rating"
+                  onClose={() => setShow(false)}
+                  show={show}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <div>⭐</div>
+                    <div style={{ fontSize: "20px" }}>⭐</div>
+                    <div style={{ fontSize: "25px" }}>⭐</div>
+                    <div style={{ fontSize: "30px" }}>⭐</div>
+                    <div style={{ fontSize: "35px" }}>⭐</div>
+                  </div>
+                </Modal>
               </div>
             </div>
           ))}

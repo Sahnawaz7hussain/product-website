@@ -13,6 +13,9 @@
   box-sizing: border-box;
   padding-left: 40px;
   padding-right: 60px;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
 }
 .navLinks {
   border: 0px solid blue;

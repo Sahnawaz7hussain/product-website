@@ -1,0 +1,41 @@
+.cartMainContainer {
+  height: auto;
+  width: auto;
+  border: 0px dotted blue;
+}
+.cartItemContainer {
+  height: auto;
+  width: 70%;
+  border: 1px dotted maroon;
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  /* justify-content: ; */
+  gap: 25px;
+  margin-top: 15px;
+  border-radius: 10px;
+}
+.incButton,
+.decButton {
+  padding: 5px 16px;
+  border: 1px solid orange;
+  border-radius: 5px;
+  font-size: 16px;
+  color: orange;
+}
+.countButton {
+  font-size: 16px;
+  background-color: white;
+  padding: 5px 16px;
+  border: 1px solid lightgray;
+  color: black;
+}
+.removeButton {
+  background-color: maroon;
+  font-size: 16px;
+  color: white;
+  border: 1px solid maroon;
+  border-radius: 5px;
+  padding: 8px 14px;
+}

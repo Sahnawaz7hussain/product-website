@@ -1,5 +1,5 @@
 import React from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { BsCart4 } from "react-icons/bs";
 import Styles from "./navbar.module.css";
 export const Navbar = () => {
@@ -11,11 +11,10 @@ export const Navbar = () => {
         </h3>
         <ul className={Styles.navLinks}>
           <li className={Styles.navOneLink}>
-            {/* <Link to="/">Products</Link> */}
-            Products
+            <Link to="/">Products</Link>
+            {/* Products */}
           </li>
           <li className={Styles.navOneLink}>
-            {/* <Link to="/cart">Cart</Link> */}
             <div
               style={{
                 display: "flex",
@@ -23,7 +22,8 @@ export const Navbar = () => {
                 gap: "3px",
               }}
             >
-              Cart
+              <Link to="/cart">Cart</Link>
+              {/* Cart */}
               <BsCart4 />
             </div>
           </li>

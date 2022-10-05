@@ -64,11 +64,16 @@
   margin-top: 15px;
 }
 .productPrice {
-  margin-right: 40px;
   color: red;
   font-size: 19px;
 }
 .productTitle,
+.productPrice,
 .productRating {
   margin-left: 10px;
+}
+.productTitle {
+  white-space: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
