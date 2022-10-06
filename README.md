@@ -3,9 +3,9 @@
  <h3>Fron-end: html, css, javascript, ReactJS, React-Router, axios, React-Redux,vercel</h3>
   <h3>Back-end: Json-server, heroku</h3>
   <h2>Contributors</h2>
-  <li>Ayesha Khan <a href="https://ayeshakhan14.github.io/" target="_blank" rel="noopener" > Portfolio</a> </li>
-  <li>Sahnawaz Hussain <a href="https://sahnawaz7hussain.github.io/" target="_blank" > Portfolio</a></li>
-  [go](http://stackoverflow.com){:target="_blank" rel="noopener"}
+
+- Ayesha Khan [[Portfolio](https://ayeshakhan14.github.io/)]
+- Sahnawaz Hussain [[Portfolio](https://sahnawaz7hussain.github.io/)]
 <h2>Homepage/Productpage</h2>
 <img src="https://user-images.githubusercontent.com/101489367/194397489-fe5776d6-22c5-4215-b336-6e08ac7f42bb.png" alt="homepage/productpage"/> 
 <br>
