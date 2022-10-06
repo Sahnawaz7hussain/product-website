@@ -31,25 +31,25 @@ const HomePage = () => {
     setShow(true);
     //console.log("inside func", ratingid);
   }
-  console.log("outsite fun", starId);
+  // console.log("outsite fun", starId);
   const starOne = (val) => {
-    console.log("star one", starId, val);
+    // console.log("star one", starId, val);
     setShow(false);
   };
   const starTwo = (val) => {
-    console.log("star one slicked", starId, val);
+    // console.log("star one slicked", starId, val);
     setShow(false);
   };
   const starThree = (val) => {
-    console.log("startThree", starId, val);
+    // console.log("startThree", starId, val);
     setShow(false);
   };
   const starFour = (val) => {
-    console.log("start four", starId, val);
+    // console.log("start four", starId, val);
     setShow(false);
   };
   const starFive = (val) => {
-    console.log("star five", starId, val);
+    //console.log("star five", starId, val);
     setShow(false);
   };
   if (isLoading) {

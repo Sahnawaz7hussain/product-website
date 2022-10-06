@@ -33,7 +33,7 @@ const CartPage = () => {
       dispatch(getCarts());
     });
   };
-  console.log("cartPage:::", isLoading);
+  // console.log("cartPage:::", isLoading);
 
   const wholeTotal = cartData.reduce((acc, el) => acc + el.price * el.count, 0);
   if (cartData.length === 0 && isLoading) {
