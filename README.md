@@ -1,7 +1,7 @@
 # product-website
- <h3>This is a mini Product website. Main motive to build this webiste is apply complete functionality of cartpage of an e-commerce webiste.It took astimated 10 hours to complete the website. Here use can add product to cart , remove product from cart, increase/decrease count of products.</h3>
- <h3>Fron-end: html, css, javascript, ReactJS, React-Router, axios, React-Redux,vercel</h3>
-  <h3>Back-end: Json-server, heroku</h3>
+ <h3>This is a mini Product website. Main motive to build this webiste is apply complete functionality of cartpage of an e-commerce website.It took almost 10 hours to complete the website. Here user can add product to cart , remove product from cart, increase/decrease count of products.</h3>
+ <h3>Fron-end: html | css | javascript | ReactJS | React-Router| axios | React-Redux | vercel</h3>
+  <h3>Back-end: json-server | heroku</h3>
   <h2>Contributors</h2>
 
 - Ayesha Khan [[Portfolio](https://ayeshakhan14.github.io/)]
