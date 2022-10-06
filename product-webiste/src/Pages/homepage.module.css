@@ -21,8 +21,10 @@ body {
   /* background-color: rgb(247, 143, 185); */
 }
 .productImg {
-  width: 271px;
+  width: 98%;
   height: 200px;
+  display: block;
+  margin: auto;
 }
 /* .productImg:hover {
   width: 280px;
@@ -89,6 +91,13 @@ body {
   white-space: wrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 1050px) {
+  .productsCont {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 @media screen and (max-width: 750px) {
   .productsCont {
