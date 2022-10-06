@@ -26,7 +26,7 @@ const CartPage = () => {
     dispatch(patchCart(id, count + 1)).then((res) => {
       // console.log(res);
       dispatch(getCarts());
-      // setCarts([...carts, res.payload]);
+     
     });
   };
   const handleDecCount = (id, count) => {
@@ -36,8 +36,7 @@ const CartPage = () => {
     });
   };
 
-  const total = cartData.reduce((acc, el) => acc + el.price * el.count, 0);
-  console.log(total);
+const wholeTotal=cartData.reduce((acc,el)=> acc + el.price*el.count,0)
   // if (isLoading) {
   //   return <h1>Loading Carts...</h1>;
   // }
@@ -48,7 +47,8 @@ const CartPage = () => {
           <div className={Styles.cartItemContainer} key={el.id}>
             <img
               style={{
-                width: "30%",
+                width: "15%",
+                height:"200px",
                 borderTopLeftRadius: "10px",
                 borderBottomLeftRadius: "10px",
               }}
@@ -93,7 +93,7 @@ const CartPage = () => {
                   </button>
                 </div>
 
-                <div>Total:{total}</div>
+                <div  className={Styles.totaldiv}>Total:{el.price * el.count}</div>
 
                 <button
                   onClick={() => handleRemoveCart(el.id)}
@@ -105,6 +105,9 @@ const CartPage = () => {
             </div>
           </div>
         ))}
+        <div className={Styles.totalpay}>
+        total Payment: <span style={{color:"red"}}>${ wholeTotal}</span>
+        </div>
     </div>
   );
 };

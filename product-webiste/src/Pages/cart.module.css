@@ -2,27 +2,29 @@
   height: auto;
   width: auto;
   border: 0px dotted blue;
+ 
 }
 .cartItemContainer {
   height: auto;
   width: 70%;
-  border: 1px dotted maroon;
+  border: 3px dotted rgb(29, 138, 246);
   margin: auto;
-
   display: flex;
   align-items: center;
-  /* justify-content: ; */
+  /* justify-content:space-around ; */
   gap: 25px;
   margin-top: 15px;
   border-radius: 10px;
+  padding:10px;
 }
 .incButton,
 .decButton {
   padding: 5px 16px;
-  border: 1px solid orange;
+  border: 1px solid rgb(29, 138, 246);
   border-radius: 5px;
   font-size: 16px;
-  color: orange;
+  color: rgb(10, 117, 225);
+  cursor: pointer;
 }
 .countButton {
   font-size: 16px;
@@ -35,7 +37,28 @@
   background-color: maroon;
   font-size: 16px;
   color: white;
-  border: 1px solid maroon;
+  border: 3px solid maroon;
   border-radius: 5px;
   padding: 8px 14px;
+  cursor: pointer;
+  margin-left: 30px;
+}
+.totaldiv{
+  border:2px solid rgb(29, 138, 246);
+  font-size: 16px;
+  color: white;
+  background-color: rgb(29, 138, 246);
+  padding: 8px 14px;
+  border-radius: 5px;
+  font-style: italic;
+  font-weight: 600;
+  margin-left: 30px;
+}
+.totalpay{
+  background-color: rgb(16, 115, 196);
+  margin-top: 20%;
+  text-align: center;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 20px;
 }

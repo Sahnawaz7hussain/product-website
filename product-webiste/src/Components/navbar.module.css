@@ -3,9 +3,13 @@
   padding: 0px;
   box-sizing: border-box;
 }
-
+a{
+  text-decoration: none;
+  color:black;
+  font-weight: bold;
+}
 .navCont {
-  height: 70px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -15,7 +19,7 @@
   padding-right: 60px;
   position: sticky;
   top: 0;
-  background-color: #fff;
+  background-color: rgb(16, 115, 196);
 }
 .navLinks {
   border: 0px solid blue;
@@ -28,5 +32,6 @@
 .navOneLink {
   list-style: none;
   font-size: 20px;
-  color: blueviolet;
+  color: black;
+  font-weight: bold;
 }
