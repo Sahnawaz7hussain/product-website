@@ -3,14 +3,13 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCart, getCarts, patchCart } from "../Redux/CartReducer/action";
 import Styles from "./cart.module.css";
-
 const CartPage = () => {
   const dispatch = useDispatch();
   const [carts, setCarts] = useState([]);
   const { cartData, isLoading, isError } = useSelector(
     (state) => state.CartReducer
   );
-  console.log(" cartpage carts:::", carts);
+  //console.log(" cartpage carts:::", carts);
   useEffect(() => {
     dispatch(getCarts()).then((res) => {
       setCarts(res.payload);
@@ -26,32 +25,30 @@ const CartPage = () => {
     dispatch(patchCart(id, count + 1)).then((res) => {
       // console.log(res);
       dispatch(getCarts());
-     
     });
   };
   const handleDecCount = (id, count) => {
     dispatch(patchCart(id, count - 1)).then((res) => {
-      console.log(res);
+      //console.log(res);
       dispatch(getCarts());
     });
   };
+  console.log("cartPage:::", isLoading);
 
-const wholeTotal=cartData.reduce((acc,el)=> acc + el.price*el.count,0)
-  // if (isLoading) {
-  //   return <h1>Loading Carts...</h1>;
-  // }
+  const wholeTotal = cartData.reduce((acc, el) => acc + el.price * el.count, 0);
+  if (cartData.length === 0 && isLoading) {
+    return (
+      <h1 style={{ textAlign: "center", marginTop: "35px" }}>
+        Loading Carts...
+      </h1>
+    );
+  }
   return (
     <div className={Styles.cartMainContainer}>
       {cartData &&
         cartData.map((el) => (
           <div className={Styles.cartItemContainer} key={el.id}>
             <img
-              style={{
-                width: "15%",
-                height:"200px",
-                borderTopLeftRadius: "10px",
-                borderBottomLeftRadius: "10px",
-              }}
               className={Styles.cartImage}
               src={el.images[0]}
               alt={el.title}
@@ -60,23 +57,9 @@ const wholeTotal=cartData.reduce((acc,el)=> acc + el.price*el.count,0)
             <div className={Styles.cartLeftContainer}>
               <h2>₹{el.price}</h2>
               <h3>{el.title}</h3>
-              <p>{el.description}</p>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-around",
-                  marginTop: "10px",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "10px",
-                  }}
-                >
+              <p style={{ width: "90%" }}>{el.description}</p>
+              <div className={Styles.allButtonsContainer}>
+                <div className={Styles.buttonsContainer}>
                   <button
                     onClick={() => handleDecCount(el.id, el.count)}
                     disabled={el.count < 2}
@@ -93,7 +76,9 @@ const wholeTotal=cartData.reduce((acc,el)=> acc + el.price*el.count,0)
                   </button>
                 </div>
 
-                <div  className={Styles.totaldiv}>Total:{el.price * el.count}</div>
+                <div className={Styles.totaldiv}>
+                  Total:{el.price * el.count}
+                </div>
 
                 <button
                   onClick={() => handleRemoveCart(el.id)}
@@ -105,9 +90,22 @@ const wholeTotal=cartData.reduce((acc,el)=> acc + el.price*el.count,0)
             </div>
           </div>
         ))}
+      {wholeTotal ? (
         <div className={Styles.totalpay}>
-        total Payment: <span style={{color:"red"}}>${ wholeTotal}</span>
+          total Payment: ₹<span style={{ color: "red" }}>{wholeTotal}</span>
         </div>
+      ) : (
+        <i>
+          <h2
+            style={{
+              marginTop: "50px",
+              textAlign: "center",
+            }}
+          >
+            Your Cart is Empty!
+          </h2>
+        </i>
+      )}
     </div>
   );
 };

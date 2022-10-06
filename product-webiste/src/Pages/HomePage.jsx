@@ -4,7 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from "../Redux/ProductReducer/action";
 import { postCart } from "../Redux/CartReducer/action";
 import { Modal } from "../Components/Modal";
+var starId = null;
 const HomePage = () => {
+  // window.ratingid;
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
 
@@ -24,6 +26,32 @@ const HomePage = () => {
       }
     });
   };
+  function giveRatingFn(val) {
+    starId = val;
+    setShow(true);
+    //console.log("inside func", ratingid);
+  }
+  console.log("outsite fun", starId);
+  const starOne = (val) => {
+    console.log("star one", starId, val);
+    setShow(false);
+  };
+  const starTwo = (val) => {
+    console.log("star one slicked", starId, val);
+    setShow(false);
+  };
+  const starThree = (val) => {
+    console.log("startThree", starId, val);
+    setShow(false);
+  };
+  const starFour = (val) => {
+    console.log("start four", starId, val);
+    setShow(false);
+  };
+  const starFive = (val) => {
+    console.log("star five", starId, val);
+    setShow(false);
+  };
   if (isLoading) {
     return (
       <img
@@ -31,7 +59,7 @@ const HomePage = () => {
           marginTop: "13%",
           marginLeft: "36%",
         }}
-        src="https://media2.giphy.com/media/17mNCcKU1mJlrbXodo/200w.webp?cid=ecf05e477qmdvqnpzbq3nldhsq0ujvzlyyxezbovsz1yildq&rid=200w.webp&ct=g"
+        src="https://media4.giphy.com/media/xTk9ZvMnbIiIew7IpW/200w.webp?cid=ecf05e478ggnmt01389oxd4krwg8eebvpezvntmqsadd7lwm&rid=200w.webp&ct=g"
         alt="Loading Produts..."
       />
     );
@@ -61,7 +89,7 @@ const HomePage = () => {
                 </button>
                 <button
                   className={Styles.giveRating}
-                  onClick={() => setShow(true)}
+                  onClick={() => giveRatingFn(el.id)}
                 >
                   Give Rating
                 </button>{" "}
@@ -77,11 +105,31 @@ const HomePage = () => {
                       justifyContent: "center",
                     }}
                   >
-                    <div>⭐</div>
-                    <div style={{ fontSize: "20px" }}>⭐</div>
-                    <div style={{ fontSize: "25px" }}>⭐</div>
-                    <div style={{ fontSize: "30px" }}>⭐</div>
-                    <div style={{ fontSize: "35px" }}>⭐</div>
+                    <div onClick={() => starOne(1)}>⭐</div>
+                    <div
+                      onClick={() => starTwo(2)}
+                      style={{ fontSize: "20px" }}
+                    >
+                      ⭐
+                    </div>
+                    <div
+                      onClick={() => starThree(3)}
+                      style={{ fontSize: "25px" }}
+                    >
+                      ⭐
+                    </div>
+                    <div
+                      onClick={() => starFour(4)}
+                      style={{ fontSize: "30px" }}
+                    >
+                      ⭐
+                    </div>
+                    <div
+                      onClick={() => starFive(5)}
+                      style={{ fontSize: "35px" }}
+                    >
+                      ⭐
+                    </div>
                   </div>
                 </Modal>
               </div>

@@ -2,7 +2,6 @@
   height: auto;
   width: auto;
   border: 0px dotted blue;
- 
 }
 .cartItemContainer {
   height: auto;
@@ -11,11 +10,44 @@
   margin: auto;
   display: flex;
   align-items: center;
-  /* justify-content:space-around ; */
   gap: 25px;
   margin-top: 15px;
   border-radius: 10px;
-  padding:10px;
+  padding: 10px;
+}
+.cartImage {
+  width: 180px;
+  height: 200px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.cartLeftContainer {
+  height: auto;
+  width: auto;
+  border: 0px solid teal;
+}
+
+.allButtonsContainer {
+  display: flex;
+  align-items: center;
+  gap: 5%;
+  margin-top: 10px;
+  width: fit-content;
+  border: 0px solid red;
+}
+.buttonsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+@media screen and (max-width: 980px) {
+  .cartItemContainer {
+    width: 85%;
+  }
+  .allButtonsContainer {
+    gap: 2px;
+  }
 }
 .incButton,
 .decButton {
@@ -43,8 +75,8 @@
   cursor: pointer;
   margin-left: 30px;
 }
-.totaldiv{
-  border:2px solid rgb(29, 138, 246);
+.totaldiv {
+  border: 2px solid rgb(29, 138, 246);
   font-size: 16px;
   color: white;
   background-color: rgb(29, 138, 246);
@@ -54,11 +86,71 @@
   font-weight: 600;
   margin-left: 30px;
 }
-.totalpay{
+.totalpay {
   background-color: rgb(16, 115, 196);
-  margin-top: 20%;
+  margin-top: 20px;
   text-align: center;
   font-weight: bold;
   font-style: italic;
   font-size: 20px;
+  position: sticky;
+  bottom: 0;
+}
+@media screen and (max-width: 750px) {
+  .cartItemContainer {
+    display: block;
+  }
+  .cartImage {
+    display: block;
+    margin: auto;
+    width: 80%;
+    height: auto;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0px;
+  }
+  .cartLeftContainer {
+    margin: auto;
+    align-self: center;
+    border: 0px;
+  }
+  .allButtonsContainer {
+    margin: auto;
+    border: 0px;
+    margin-top: 10px;
+  }
+}
+@media screen and (max-width: 670px) {
+  .cartItemContainer {
+    width: 90%;
+  }
+  .allButtonsContainer {
+    gap: 0px;
+  }
+  .buttonsContainer {
+    gap: 2px;
+  }
+}
+@media screen and (max-width: 573px) {
+  .cartItemContainer {
+    width: 95%;
+  }
+  .allButtonsContainer {
+    display: block;
+    margin: initial;
+    border: 0px solid blue;
+    width: 100%;
+  }
+  .totaldiv {
+    margin-left: 40%;
+    width: fit-content;
+  }
+  .buttonsContainer {
+    margin-bottom: 15px;
+    margin-left: -35%;
+    margin-top: 15px;
+  }
+  .removeButton {
+    margin-left: 60%;
+    margin-top: 15px;
+  }
 }

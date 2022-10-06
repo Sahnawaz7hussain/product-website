@@ -6,31 +6,26 @@ export const Navbar = () => {
   return (
     <>
       <div className={Styles.navCont}>
-        <h3>
-          <i>Logo</i>
-        </h3>
+        {" "}
+        <i>
+          <h3 className={Styles.text_logo} style={{ color: "#fff" }}>
+            Product App
+          </h3>
+        </i>
         <ul className={Styles.navLinks}>
+          <Link to="/">
+            <li className={Styles.navOneLink}>Products</li>
+          </Link>
           <li className={Styles.navOneLink}>
-            <Link to="/">Products</Link>
-            {/* Products */}
+            <Link to="/cart">
+              {" "}
+              <BsCart4 />{" "}
+            </Link>
           </li>
-          <li className={Styles.navOneLink}>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "3px",
-              }}
-            >
-              <Link to="/cart">Cart</Link>
-              {/* Cart */}
-              <BsCart4 />
-            </div>
-          </li>
-          <li className={Styles.navOneLink}>
-            {/* <Link to="/blogs">Blogs</Link> */}
+          {/* <li className={Styles.navOneLink}>
+            {/* <Link to="/blogs">Blogs</Link> 
             Blogs
-          </li>
+          </li> */}
         </ul>
       </div>
     </>

@@ -3,9 +3,9 @@
   padding: 0px;
   box-sizing: border-box;
 }
-a{
+a {
   text-decoration: none;
-  color:black;
+  color: #fff;
   font-weight: bold;
 }
 .navCont {
@@ -22,16 +22,30 @@ a{
   background-color: rgb(16, 115, 196);
 }
 .navLinks {
-  border: 0px solid blue;
-  width: 30%;
+  border: 0px solid black;
+  width: auto;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  /* gap: 45px; */
+
+  /* justify-content: space-evenly; */
+  gap: 30px;
 }
 .navOneLink {
   list-style: none;
   font-size: 20px;
-  color: black;
+  color: #fff;
   font-weight: bold;
+}
+@media screen and (max-width: 350px) {
+  .text_logo {
+    font-size: 12px;
+  }
+  .navCont {
+    padding-left: 5px;
+    padding-right: 5px;
+    gap: 5px;
+  }
+  .navOneLink {
+    font-size: 14px;
+  }
 }
