@@ -65,6 +65,7 @@ const HomePage = () => {
       />
     );
   }
+
   if (isError) {
     return <h2>Something went wrong...</h2>;
   }
