@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from "../Redux/ProductReducer/action";
 import { postCart } from "../Redux/CartReducer/action";
 import { Modal } from "../Components/Modal";
+import loading from "../Images/loading.gif";
 var starId = null;
 const HomePage = () => {
   // window.ratingid;
@@ -59,7 +60,7 @@ const HomePage = () => {
           marginTop: "13%",
           marginLeft: "36%",
         }}
-        src="https://media4.giphy.com/media/xTk9ZvMnbIiIew7IpW/200w.webp?cid=ecf05e478ggnmt01389oxd4krwg8eebvpezvntmqsadd7lwm&rid=200w.webp&ct=g"
+        src={loading}
         alt="Loading Produts..."
       />
     );
@@ -69,12 +70,17 @@ const HomePage = () => {
   }
   return (
     <>
+      {products && (
+        <h1 style={{ color: "black", marginLeft: "5%", marginBottom: "-50px" }}>
+          Products({products.length})
+        </h1>
+      )}
       <div className={Styles.productsCont}>
         {/* {isLoading && <h2>Loading Products...</h2>} */}
         {products &&
           products.map((el) => (
             <div className={Styles.productCont} key={el.id}>
-              <img className={Styles.productImg} src={el.images[0]} alt="p" />
+              <img className={Styles.productImg} src={el.images} alt="p" />
 
               <h3 className={Styles.productTitle}>{el.title}</h3>
 

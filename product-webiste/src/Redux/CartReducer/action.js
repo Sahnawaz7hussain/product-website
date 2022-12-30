@@ -1,10 +1,11 @@
 import * as types from "./actionTypes";
 import axios from "axios";
+let u = "https://fake-json-apis.onrender.com/api/cart";
 
 export const getCarts = () => (dispatch) => {
   dispatch({ type: types.GET_CART_PRODUCT_REQUEST });
   return axios
-    .get("https://akcart.herokuapp.com/cart")
+    .get(u)
     .then((res) => {
       // console.log(res.data, " get action");
       return dispatch({
@@ -20,7 +21,7 @@ export const getCarts = () => (dispatch) => {
 export const postCart = (newData) => (dispatch) => {
   dispatch({ type: types.POST_CART_PRODUCT_REQUEST });
   return axios
-    .post("https://akcart.herokuapp.com/cart", newData)
+    .post(u, newData)
     .then((res) => {
       return dispatch({
         type: types.POST_CART_PRODUCT_SUCCESS,
@@ -35,7 +36,7 @@ export const postCart = (newData) => (dispatch) => {
 export const patchCart = (id, params) => (dispatch) => {
   dispatch({ type: types.PATCH_CART_PRODUCT_SUCCESS });
   return axios
-    .patch(`https://akcart.herokuapp.com/cart/${id}`, {
+    .patch(`${u}/${id}`, {
       count: params,
     })
     .then((res) => {
@@ -53,7 +54,7 @@ export const patchCart = (id, params) => (dispatch) => {
 export const deleteCart = (id) => (dispatch) => {
   dispatch({ type: types.DELETE_CART_PRODUCT_REQUEST });
   return axios
-    .delete(`https://akcart.herokuapp.com/cart/${id}`)
+    .delete(`${u}/${id}`)
     .then((res) => {
       // console.log("deleted response;:::", res);
       return dispatch({

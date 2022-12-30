@@ -44,69 +44,76 @@ const CartPage = () => {
     );
   }
   return (
-    <div className={Styles.cartMainContainer}>
-      {cartData &&
-        cartData.map((el) => (
-          <div className={Styles.cartItemContainer} key={el.id}>
-            <img
-              className={Styles.cartImage}
-              src={el.images[0]}
-              alt={el.title}
-            />
+    <>
+      {cartData.length > 0 && (
+        <h1 style={{ marginLeft: "5%", fontSize: "28px", marginTop: "15px" }}>
+          Total Carts({cartData.length})
+        </h1>
+      )}
+      <div className={Styles.cartMainContainer}>
+        {cartData &&
+          cartData.map((el) => (
+            <div className={Styles.cartItemContainer} key={el.id}>
+              <img
+                className={Styles.cartImage}
+                src={el.images}
+                alt={el.title}
+              />
 
-            <div className={Styles.cartLeftContainer}>
-              <h2>₹{el.price}</h2>
-              <h3>{el.title}</h3>
-              <p style={{ width: "90%" }}>{el.description}</p>
-              <div className={Styles.allButtonsContainer}>
-                <div className={Styles.buttonsContainer}>
+              <div className={Styles.cartLeftContainer}>
+                <h2>₹{el.price}</h2>
+                <h3>{el.title}</h3>
+                <p style={{ width: "90%" }}>{el.description}</p>
+                <div className={Styles.allButtonsContainer}>
+                  <div className={Styles.buttonsContainer}>
+                    <button
+                      onClick={() => handleDecCount(el.id, el.count)}
+                      disabled={el.count < 2}
+                      className={Styles.decButton}
+                    >
+                      -
+                    </button>
+                    <button className={Styles.countButton}>{el.count}</button>
+                    <button
+                      onClick={() => handleIndCount(el.id, el.count)}
+                      className={Styles.incButton}
+                    >
+                      +
+                    </button>
+                  </div>
+
+                  <div className={Styles.totaldiv}>
+                    Total:{el.price * el.count}
+                  </div>
+
                   <button
-                    onClick={() => handleDecCount(el.id, el.count)}
-                    disabled={el.count < 2}
-                    className={Styles.decButton}
+                    onClick={() => handleRemoveCart(el.id)}
+                    className={Styles.removeButton}
                   >
-                    -
-                  </button>
-                  <button className={Styles.countButton}>{el.count}</button>
-                  <button
-                    onClick={() => handleIndCount(el.id, el.count)}
-                    className={Styles.incButton}
-                  >
-                    +
+                    Remove
                   </button>
                 </div>
-
-                <div className={Styles.totaldiv}>
-                  Total:{el.price * el.count}
-                </div>
-
-                <button
-                  onClick={() => handleRemoveCart(el.id)}
-                  className={Styles.removeButton}
-                >
-                  Remove
-                </button>
               </div>
             </div>
+          ))}
+        {wholeTotal ? (
+          <div className={Styles.totalpay}>
+            total Payment: ₹<span style={{ color: "red" }}>{wholeTotal}</span>
           </div>
-        ))}
-      {wholeTotal ? (
-        <div className={Styles.totalpay}>
-          total Payment: ₹<span style={{ color: "red" }}>{wholeTotal}</span>
-        </div>
-      ) : (
-        <i>
-          <h2
-            style={{
-              marginTop: "50px",
-              textAlign: "center",
-            }}
-          >
-            Your Cart is Empty!
-          </h2>
-        </i>
-      )}
-    </div>
+        ) : (
+          <i>
+            <h2
+              style={{
+                marginTop: "50px",
+                textAlign: "center",
+              }}
+            >
+              Your Cart is Empty!
+            </h2>
+          </i>
+        )}
+      </div>
+    </>
   );
 };
 
